@@ -23,9 +23,9 @@ def convert_image_to_array(image_dir):
         print(f"Error : {e}")
         return None
 
-def evaluate():
+def evaluate(image_location):
     loaded_model = load_model(f"./model.h5")
-    image_location = f"/home/debjyoti/Devs/leaf_dis/src/potato.png"
+    
     im=convert_image_to_array(image_location)
     np_image_li = np.array(im, dtype=np.float16) / 255.0
     npp_image = np.expand_dims(np_image_li, axis=0)
@@ -35,4 +35,6 @@ def evaluate():
     itemindex = np.where(result==np.max(result))
     #print("probability:"+str(np.max(result)))
     return classes[itemindex[1][0]] 
+    
+# print(evaluate('<image location>')) # for testing
 
