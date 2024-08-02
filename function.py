@@ -33,9 +33,9 @@ def evaluate(image_location):
     result = loaded_model.predict(npp_image)
 
     itemindex = np.where(result==np.max(result))
-    #print(itemindex[1][0]) #for testing
-    #print("probability:"+str(np.max(result)))
+    # print(itemindex[1][0]) # for testing
+    # print("probability:"+str(np.max(result))) # for testing
     return classes[itemindex[1][0]] 
    
-#print(evaluate('/home/debjyoti/Devs/leaf_dis/src/image/414f6249-9f78-4af5-9593-9d5a7e7d979f___RS_HL 1918.JPG')) # for testing
+# print(evaluate('<image location>')) # for testing
 
