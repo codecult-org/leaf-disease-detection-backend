@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 
 classes = ['Pepper__bell___Bacterial_spot', 'Pepper__bell___healthy',
- 'Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy'
+ 'Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy',
  'Tomato_Bacterial_spot', 'Tomato_Early_blight', 'Tomato_Late_blight',
  'Tomato_Leaf_Mold', 'Tomato_Septoria_leaf_spot',
  'Tomato_Spider_mites_Two_spotted_spider_mite', 'Tomato__Target_Spot',
@@ -33,8 +33,9 @@ def evaluate(image_location):
     result = loaded_model.predict(npp_image)
 
     itemindex = np.where(result==np.max(result))
+    #print(itemindex[1][0]) #for testing
     #print("probability:"+str(np.max(result)))
     return classes[itemindex[1][0]] 
-    
-# print(evaluate('<image location>')) # for testing
+   
+#print(evaluate('/home/debjyoti/Devs/leaf_dis/src/image/414f6249-9f78-4af5-9593-9d5a7e7d979f___RS_HL 1918.JPG')) # for testing
 
