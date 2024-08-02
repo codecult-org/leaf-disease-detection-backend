@@ -23,10 +23,10 @@ def sup():
 
     if file:
         file_path = os.path.join('./image', file.filename)
-        print("* image path:"+file_path)
+        print("# image path: "+file_path) # for testing
         file.save(file_path)
     
     data = function.evaluate(file_path)
     json_data = json.dumps(data)
-    print('# result: ',data)
+    print('# result: ',data) # for testing
     return json_data
