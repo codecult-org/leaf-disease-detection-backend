@@ -5,14 +5,17 @@ import os
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=[
+    'https://leaf-disease-detection-ecru.vercel.app',
+    'https://leaf-disease-detection-hc320v1es-sankhadiproys-projects.vercel.app'
+])
 
-@app.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = 'https://leaf-disease-detection-ecru.vercel.app/'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-    response.headers['Access-Control-Allow-Methods'] = 'POST'
-    return response
+# @app.after_request
+# def add_cors_headers(response):
+#     response.headers['Access-Control-Allow-Origin'] = 'https://leaf-disease-detection-ecru.vercel.app/'
+#     response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+#     response.headers['Access-Control-Allow-Methods'] = 'POST'
+#     return response
 
 @app.route('/')
 def hello():
