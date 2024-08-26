@@ -21,3 +21,4 @@ if changes are made to the requirements.txt file, run the following command to u
 ```bash
 pip freeze > requirements.txt
 ```
+**Docker Image**: ```docker pull sankhadiproy/leaf:latest```
