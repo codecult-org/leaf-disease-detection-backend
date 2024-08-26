@@ -1,11 +1,17 @@
 from flask import Flask, request, jsonify
 import function
 import json
-from flask_cors import CORS
 import os
 
 app = Flask(__name__)
 CORS(app)
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = 'https://leaf-disease-detection-ecru.vercel.app/'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    response.headers['Access-Control-Allow-Methods'] = 'POST'
+    return response
 
 @app.route('/')
 def hello():
