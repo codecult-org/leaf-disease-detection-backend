@@ -6,8 +6,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app, origins=[
-    'https://leaf-disease-detection-ecru.vercel.app',
-    'https://leaf-disease-detection-hc320v1es-sankhadiproys-projects.vercel.app'
+    '*'
 ])
 
 # @app.after_request
@@ -17,13 +16,15 @@ CORS(app, origins=[
 #     response.headers['Access-Control-Allow-Methods'] = 'POST'
 #     return response
 
+
 @app.route('/')
 def hello():
     return 'Welcome to leaf disease detection!'
 
+
 @app.route('/checking', methods=['POST'])
 def sup():
-    file_path=''
+    file_path = ''
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
 
@@ -33,10 +34,10 @@ def sup():
 
     if file:
         file_path = os.path.join('./image', file.filename)
-        print("# image path: "+file_path) # for testing
+        print("# image path: "+file_path)  # for testing
         file.save(file_path)
-    
+
     data = function.evaluate(file_path)
     json_data = json.dumps(data)
-    print('# result: ',data) # for testing
+    print('# result: ', data)  # for testing
     return json_data
